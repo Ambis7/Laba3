@@ -1,7 +1,5 @@
 package com.raywenderlich.android.lab1.app
 
-import ColumnScreen
-import RowScreen
 import androidx.compose.animation.Crossfade
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -9,6 +7,7 @@ import androidx.compose.runtime.Composable
 import com.raywenderlich.android.lab1.router.FundamentalsRouter
 import com.raywenderlich.android.lab1.router.Screen
 import com.raywenderlich.android.lab1.screens.*
+import com.raywenderlich.android.lab1.screenslertDialog.ColumnScreen
 
 @Composable
 fun FundamentalsApp() {
@@ -24,8 +23,8 @@ fun FundamentalsApp() {
                 is Screen.Row -> RowScreen()
                 is Screen.Column -> ColumnScreen()
                 is Screen.Box -> BoxScreen()
-                is Screen.Scaffold -> ScaffoldScreen()
-                is Screen.Surface -> SurfaceScreen()
+                is Screen.Surface ->SurfaceScreen()
+                is Screen.Scaffold ->ScaffoldScreen()
             }
         }
     }

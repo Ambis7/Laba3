@@ -1,3 +1,5 @@
+package com.raywenderlich.android.lab1.screenslertDialog
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,8 +12,10 @@ import androidx.compose.ui.unit.sp
 import com.raywenderlich.android.lab1.router.BackButtonHandler
 import com.raywenderlich.android.lab1.router.FundamentalsRouter
 import com.raywenderlich.android.lab1.router.Screen
+import com.raywenderlich.android.lab1.screens.THREE_ELEMENT_LIST
 
 @Composable
+
 fun ColumnScreen(){
     MyColumn()
 
@@ -19,22 +23,22 @@ fun ColumnScreen(){
         FundamentalsRouter.navigateTo(Screen.Navigation)
     }
 }
-
 @Composable
 fun MyColumn(){
-    Column(
+    Column (
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly,
         modifier = Modifier.fillMaxSize()
-    ){
-
-        THREE_ELEMENT_LIST.forEach { textResId ->
+    )
+    {
+        THREE_ELEMENT_LIST.forEach{ textResId ->
             Text(
                 text = stringResource(id = textResId),
                 fontSize = 22.sp
             )
-
         }
     }
-
 }
+
+
+

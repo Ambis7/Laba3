@@ -47,40 +47,35 @@ fun MyButton() {
             color = colorResource(id = R.color.black)
         )
     ) {
-        Text(
-            text = stringResource(id = R.string.set_button),
+        Text(text = stringResource(id = R.string.set_button),
             color = Color.White
         )
     }
-
 }
 
 @Composable
 fun MyRadioGroup() {
-    val radioButtons = listOf(0, 1, 2)
+    val radioButtons = listOf(0,1,2)//1
 
-    val selectedButton = remember { mutableStateOf(radioButtons.first()) }
+    val selectedButton = remember { mutableStateOf(radioButtons.first()) }//2
 
     Column {
-        radioButtons.forEach { index ->
+        radioButtons.forEach { index ->//3
             val isSelected = index == selectedButton.value
-            val colors = RadioButtonDefaults.colors(
+            val colors = RadioButtonDefaults.colors( //4
                 selectedColor = colorResource(id = R.color.purple_500),
                 unselectedColor = colorResource(id = R.color.black),
                 disabledColor = Color.LightGray
             )
 
-            RadioButton(
+            RadioButton(//5
                 colors = colors,
                 selected = isSelected,
-                onClick = { selectedButton.value = index }
+                onClick = { selectedButton.value=index }//6
             )
         }
-
     }
-
 }
-
 
 @Composable
 fun MyFloatingActionButton() {
@@ -89,7 +84,7 @@ fun MyFloatingActionButton() {
         backgroundColor = colorResource(id = R.color.purple_700),
         contentColor = Color.White,
         content = {
-            Icon(Icons.Filled.Favorite, contentDescription = "Text FAB")
+            Icon(Icons.Filled.Favorite, contentDescription =" Test FAB " )
         }
     )
 

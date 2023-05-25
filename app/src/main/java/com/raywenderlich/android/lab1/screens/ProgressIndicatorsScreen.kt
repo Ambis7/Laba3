@@ -8,6 +8,7 @@ import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.R
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import com.raywenderlich.android.lab1.router.BackButtonHandler
@@ -23,7 +24,7 @@ fun ProgressIndicatorScreen() {
         verticalArrangement = Arrangement.Center
     ) {
         CircularProgressIndicator(
-            color = colorResource(id = androidx.compose.ui.R.color.vector_tint_theme_color),
+            color = colorResource(id = R.color.vector_tint_theme_color),
             strokeWidth = 5.dp
         )
         LinearProgressIndicator(progress = 0.5f)

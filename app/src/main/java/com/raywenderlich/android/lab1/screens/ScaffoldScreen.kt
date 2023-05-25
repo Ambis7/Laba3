@@ -1,40 +1,76 @@
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Text
+package com.raywenderlich.android.lab1.screens
+
+import android.annotation.SuppressLint
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.sp
+import com.raywenderlich.android.lab1.R
 import com.raywenderlich.android.lab1.router.BackButtonHandler
 import com.raywenderlich.android.lab1.router.FundamentalsRouter
 import com.raywenderlich.android.lab1.router.Screen
+import com.raywenderlich.android.lab1.screenslertDialog.MyColumn
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @Composable
-fun ColumnScreen(){
-    MyColumn()
-
+fun ScaffoldScreen(){
+    MyScaffold()
     BackButtonHandler {
         FundamentalsRouter.navigateTo(Screen.Navigation)
     }
 }
-
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun MyColumn(){
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceEvenly,
-        modifier = Modifier.fillMaxSize()
-    ){
+fun MyScaffold() {
+    val scaffoldState: ScaffoldState= rememberScaffoldState()
+    val scope: CoroutineScope= rememberCoroutineScope()
 
-        THREE_ELEMENT_LIST.forEach { textResId ->
-            Text(
-                text = stringResource(id = textResId),
-                fontSize = 22.sp
+    Scaffold(
+        scaffoldState=scaffoldState,
+        contentColor = colorResource(id = R.color.colorPrimary),
+        content = {
+            MyRow()
+        },
+        topBar = {MyTopAppBar(scaffoldState=scaffoldState,scope=scope)},
+        bottomBar = {MyBottomAppBar()},
+        drawerContent = { MyColumn()}
+    )
+}
+@Composable
+fun MyTopAppBar(scaffoldState: ScaffoldState, scope: CoroutineScope) {
+    val drawerState = scaffoldState.drawerState
+
+    TopAppBar(
+        navigationIcon = {
+            IconButton(
+                content = {
+                    Icon(
+                        Icons.Default.Menu,
+                        tint = Color.White,
+                        contentDescription = stringResource(id = R.string.Menu)
+                    )
+                },
+                onClick = {
+                    scope.launch { if (drawerState.isClosed) drawerState.open() else drawerState.close() }
+                }
             )
-
-        }
-    }
+        },
+        title = {
+            Text(text = stringResource(id = R.string.MyComposeApp), color = Color.White)
+        },
+        backgroundColor = colorResource(id = R.color.colorPrimary)
+    )
+}
+@Composable
+fun MyBottomAppBar(){
+    BottomAppBar(
+        content = {},
+        backgroundColor = colorResource(id = R.color.colorPrimary)
+    )
 
 }

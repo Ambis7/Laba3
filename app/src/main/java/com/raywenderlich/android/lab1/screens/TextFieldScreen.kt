@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
-import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -37,17 +36,16 @@ fun TextFieldScreen() {
 }
 
 @Composable
-fun MyTextField() {
+fun MyTextField(){
     val textValue = remember { mutableStateOf("") }
 
-    val primoryColor = colorResource(id = R.color.purple_500)
-
+    val primaryColor = colorResource(id = R.color.purple_500)
     OutlinedTextField(
         label = { Text(text = stringResource(id = R.string.insert_text)) },
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = primoryColor,
-            focusedLabelColor = primoryColor,
-            cursorColor = primoryColor
+            focusedBorderColor = primaryColor,
+            focusedLabelColor = primaryColor,
+            cursorColor = primaryColor
         ),
         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Email),
         value = textValue.value,
@@ -56,7 +54,3 @@ fun MyTextField() {
         },
     )
 }
-
-
-
-

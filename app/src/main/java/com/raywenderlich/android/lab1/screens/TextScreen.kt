@@ -34,10 +34,10 @@ fun TextScreen() {
 
 @Composable
 fun MyText() {
-    Text(text = stringResource(id = R.string.set_text),
+    Text(text = stringResource (id = R.string.set_text),
         fontStyle = FontStyle.Italic,
-        color = colorResource(id = R.color.black),
+        color = colorResource(id = R.color.white),
         fontSize = 30.sp,
         fontWeight = FontWeight.Bold
-    )
+    )  //TODO add your code here
 }
