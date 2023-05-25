@@ -66,9 +66,9 @@ fun ListScreen(){
 
 @Composable
 fun MyList(){
-LazyColumn{
-    items(items){item -> ListItem(item) }
-}
+    LazyColumn{
+        items(items){item -> ListItem(item) }
+    }
 }
 
 @Composable
@@ -88,15 +88,15 @@ fun ListItem(bookCategory: BookCategory, modifier: Modifier=Modifier) {
         }
     }
 }
-    @Composable
-    fun BookImage(imageResource: Int){
-        Image(
-            modifier = Modifier.size(170.dp,200.dp),
-            painter = painterResource(id = imageResource),
-            contentScale = ContentScale.Fit,
-            contentDescription = stringResource(R.string.book)
-        )
-    }
+@Composable
+fun BookImage(imageResorce: Int){
+    Image(
+        modifier = Modifier.size(170.dp,200.dp),
+        painter = painterResource(id = imageResorce),
+        contentScale = ContentScale.Fit,
+        contentDescription = stringResource(R.string.ob)
+    )
+}
 data class BookCategory(
     @StringRes
     val categoryResourceId: Int,
